@@ -1,0 +1,68 @@
+services:
+  # Backend API сервер
+  - type: web
+    name: real-estate-backend
+    runtime: python
+    repo: https://github.com/YOUR_USERNAME/real-estate-pricing-system.git
+    buildCommand: |
+      cd real-estate-app/backend &&
+      pip install -r requirements.txt
+    startCommand: |
+      cd real-estate-app/backend &&
+      python -c "from database import DatabaseManager; db = DatabaseManager(); db.create_tables(); db.initialize_cities_and_districts()" &&
+      python main.py
+    envVars:
+      - key: DATABASE_URL
+        fromService:
+          type: pserv
+          name: real-estate-db
+          property: connectionString
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: FLASK_ENV
+        value: production
+
+  # Автоматична система парсингу
+  - type: worker
+    name: real-estate-scraper
+    runtime: python
+    repo: https://github.com/YOUR_USERNAME/real-estate-pricing-system.git
+    buildCommand: |
+      cd real-estate-app/data-collection &&
+      pip install -r requirements.txt
+    startCommand: |
+      cd real-estate-app/data-collection &&
+      python start_auto_scraper.py
+    envVars:
+      - key: DATABASE_URL
+        fromService:
+          type: pserv
+          name: real-estate-db
+          property: connectionString
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false # Введіть вручну в Dashboard
+      - key: TELEGRAM_CHAT_ID
+        sync: false # Введіть вручну в Dashboard
+
+  # Веб інтерфейс
+  - type: web
+    name: real-estate-web
+    runtime: node
+    repo: https://github.com/YOUR_USERNAME/real-estate-pricing-system.git
+    buildCommand: |
+      cd real-estate-app/web &&
+      npm install &&
+      npm run build
+    publishDir: real-estate-app/web/build
+    envVars:
+      - key: REACT_APP_API_URL
+        fromService:
+          type: web
+          name: real-estate-backend
+          property: host
+
+  # База даних PostgreSQL
+  - type: pserv
+    name: real-estate-db
+    runtime: postgres
+    ipAllowList: [] # Доступ тільки з інших сервісів
