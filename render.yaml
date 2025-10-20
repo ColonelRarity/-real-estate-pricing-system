@@ -53,7 +53,7 @@ services:
       cd real-estate-app/web &&
       npm install &&
       npm run build
-    publishDir: real-estate-app/web/build
+    startCommand: cd real-estate-app/web && npx serve -s build -l 10000
     envVars:
       - key: REACT_APP_API_URL
         fromService:
