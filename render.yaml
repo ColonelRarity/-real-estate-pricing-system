@@ -3,7 +3,7 @@ services:
   - type: web
     name: real-estate-backend
     runtime: python
-    repo: https://github.com/YOUR_USERNAME/real-estate-pricing-system.git
+    repo: https://github.com/ColonelRarity/-real-estate-pricing-system.git
     buildCommand: |
       cd real-estate-app/backend &&
       pip install -r requirements.txt
@@ -16,7 +16,7 @@ services:
         fromService:
           type: pserv
           name: real-estate-db
-          property: connectionString
+          property: DATABASE_URL
       - key: PYTHON_VERSION
         value: 3.11.0
       - key: FLASK_ENV
@@ -26,7 +26,7 @@ services:
   - type: worker
     name: real-estate-scraper
     runtime: python
-    repo: https://github.com/YOUR_USERNAME/real-estate-pricing-system.git
+    repo: https://github.com/ColonelRarity/-real-estate-pricing-system.git
     buildCommand: |
       cd real-estate-app/data-collection &&
       pip install -r requirements.txt
@@ -38,7 +38,7 @@ services:
         fromService:
           type: pserv
           name: real-estate-db
-          property: connectionString
+          property: DATABASE_URL
       - key: TELEGRAM_BOT_TOKEN
         sync: false # Введіть вручну в Dashboard
       - key: TELEGRAM_CHAT_ID
@@ -48,7 +48,7 @@ services:
   - type: web
     name: real-estate-web
     runtime: node
-    repo: https://github.com/YOUR_USERNAME/real-estate-pricing-system.git
+    repo: https://github.com/ColonelRarity/-real-estate-pricing-system.git
     buildCommand: |
       cd real-estate-app/web &&
       npm install &&
@@ -64,5 +64,4 @@ services:
   # База даних PostgreSQL
   - type: pserv
     name: real-estate-db
-    runtime: postgres
-    ipAllowList: [] # Доступ тільки з інших сервісів
+    plan: starter
