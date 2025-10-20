@@ -1,0 +1,75 @@
+{
+  "name": "Оцінка нерухомості України",
+  "short_name": "Real Estate UA",
+  "description": "Точна оцінка вартості нерухомості з використанням штучного інтелекту",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2196F3",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "16x16 32x32 48x48",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/logo192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity", "utilities"],
+  "lang": "uk",
+  "dir": "ltr",
+  "scope": "/",
+  "prefer_related_applications": false,
+  "screenshots": [
+    {
+      "src": "/screenshot1.png",
+      "type": "image/png",
+      "sizes": "1280x720",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/screenshot2.png",
+      "type": "image/png",
+      "sizes": "750x1334",
+      "form_factor": "narrow"
+    }
+  ],
+  "related_applications": [],
+  "shortcuts": [
+    {
+      "name": "Оцінити нерухомість",
+      "short_name": "Оцінити",
+      "description": "Швидка оцінка вартості нерухомості",
+      "url": "/evaluate",
+      "icons": [
+        {
+          "src": "/shortcut-icon.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Переглянути карту",
+      "short_name": "Карта",
+      "description": "Переглянути об'єкти на карті",
+      "url": "/map",
+      "icons": [
+        {
+          "src": "/shortcut-icon.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ]
+}

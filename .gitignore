@@ -1,0 +1,101 @@
+# База даних
+*.db
+*.sqlite
+*.sqlite3
+real_estate.db
+
+# Логи
+*.log
+logs/
+auto_scraping.log
+auto_scraper_startup.log
+
+# Тимчасові файли Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Віртуальні оточення
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE файли
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS файли
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# PID файли
+*.pid
+auto_scraper.pid
+
+# Тимчасові файли
+*.tmp
+*.temp
+
+# Налаштування локальних конфігурацій
+config_local.py
+.env.local
+
+# Секретні файли
+secrets.json
+*.key
+*.pem
+
+# Згенеровані файли
+generated/
+output/
+
+# Node modules (для веб та мобільного додатків)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# React Native
+android/app/build/
+ios/build/
+
+# Gradle
+.gradle/
+build/
+
+# Android
+*.apk
+*.ap_
+
+# iOS
+*.ipa
+*.xcarchive
