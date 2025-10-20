@@ -13,10 +13,7 @@ services:
       python main.py
     envVars:
       - key: DATABASE_URL
-        fromService:
-          type: pserv
-          name: real-estate-db
-          property: connectionString
+        sync: false  # ← введи вручну через Render Dashboard (Environment)
       - key: PYTHON_VERSION
         value: 3.11.0
       - key: FLASK_ENV
@@ -35,14 +32,11 @@ services:
       python start_auto_scraper.py
     envVars:
       - key: DATABASE_URL
-        fromService:
-          type: pserv
-          name: real-estate-db
-          property: connectionString
+        sync: false  # ← теж введи вручну
       - key: TELEGRAM_BOT_TOKEN
-        sync: false # Введіть вручну в Dashboard
+        sync: false
       - key: TELEGRAM_CHAT_ID
-        sync: false # Введіть вручну в Dashboard
+        sync: false
 
   # Веб інтерфейс
   - type: web
@@ -60,9 +54,3 @@ services:
           type: web
           name: real-estate-backend
           property: host
-
-  # База даних PostgreSQL
-  - type: pserv
-    name: real-estate-db
-    env: postgres
-    plan: starter
